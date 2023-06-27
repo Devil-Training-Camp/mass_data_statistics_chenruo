@@ -1,0 +1,10 @@
+build/*.js
+src/assets
+public
+dist
+/node_modules
+babel.config.js
+commitlint.config.js
+stylelint.config.js
+webpack.config.js
+.eslintrc.js
