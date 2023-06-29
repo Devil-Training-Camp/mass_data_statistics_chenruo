@@ -33,5 +33,6 @@ module.exports = {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
     indent: 2,
+    '@typescript-eslint/strict-boolean-expressions': 1,
   },
 };

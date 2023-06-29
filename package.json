@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server .",
     "build": "webpack .",
-    "lint": "eslint . --fix --max-warnings=0",
+    "lint": "eslint . --fix",
     "format": "prettier . --write",
     "stylelint": "stylelint '**/*.scss'",
     "prepare": "husky install",

@@ -1,0 +1,19 @@
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+td {
+  text-align: left;
+  padding: 15px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-container {
+  font-size: 12px;
+}
