@@ -34,5 +34,6 @@ module.exports = {
     quotes: ['error', 'single'],
     indent: 2,
     '@typescript-eslint/strict-boolean-expressions': 1,
+    '@typescript-eslint/require-array-sort-compare': 1,
   },
 };

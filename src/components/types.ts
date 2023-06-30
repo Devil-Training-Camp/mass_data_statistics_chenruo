@@ -11,31 +11,23 @@ export interface DataObject {
 
 export interface RegionStats {
   /**
-   * region总数
-   */
-  count: number;
-  /**
    * 总和
    */
   sum: number;
   /**
    * 最小值
    */
-  min: number;
+  minimum: number;
   /**
    * 最大值
    */
-  max: number;
-  /**
-   * 每个region下的value集合
-   */
-  values: number[];
+  maximum: number;
   /**
    * 平均值
    */
-  avg?: number;
+  average: number;
   /**
    * 中位值
    */
-  median?: number;
+  median: number;
 }
