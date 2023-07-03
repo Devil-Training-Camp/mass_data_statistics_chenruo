@@ -6,5 +6,6 @@ dist
 babel.config.js
 commitlint.config.js
 stylelint.config.js
-webpack.config.js
-.eslintrc.js
+webpack.config.cjs
+.eslintrc.cjs
+benchmark
