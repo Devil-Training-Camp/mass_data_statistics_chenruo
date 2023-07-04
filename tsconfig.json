@@ -16,6 +16,5 @@
     "noEmit": false,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"],
-  "exclude": ["benchmark"]
+  "include": ["src/**/*", "benchmark"]
 }
