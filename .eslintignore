@@ -1,0 +1,9 @@
+src/assets
+public
+dist
+/node_modules
+babel.config.js
+commitlint.config.js
+stylelint.config.js
+webpack.config.cjs
+.eslintrc.cjs
