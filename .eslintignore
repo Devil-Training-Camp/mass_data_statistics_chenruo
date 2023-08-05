@@ -2,6 +2,7 @@ src/assets
 public
 dist
 /node_modules
+# 为什么要 ignore 这些？不需要的吧？
 babel.config.js
 commitlint.config.js
 stylelint.config.js

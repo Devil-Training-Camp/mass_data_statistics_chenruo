@@ -2,9 +2,11 @@
   "compilerOptions": {
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
+    // 不能 allowjs！！！
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    // 这个最好也 false 掉，挺容易出问题的
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,

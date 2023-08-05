@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
   entry: './src/index.tsx',
+  // 这份配置只 for 开发环境，可以看看 for 生产环境需要怎么做吧
   mode: 'development',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -32,6 +33,7 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
+            // tsloader 太慢了，建议改成 babel-loader，或者 esbuild-loader
             loader: 'ts-loader',
             options: {
               compilerOptions: { noEmit: false },
