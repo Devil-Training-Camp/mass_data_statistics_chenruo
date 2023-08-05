@@ -9,9 +9,11 @@ interface DataObject {
   weight: number;
 }
 
+// 也可以考虑直接用 lodash 的 groupBy
+// 如果我去写的话，这个 keys 应该是一个函数；
 const groupBy = <T extends keyof DataObject>(data: DataObject[], keys: T[]): Record<string, DataObject[]> => {
   return data.reduce((groups: any, obj: DataObject) => {
-    const groupKey = keys.map((key: T) => obj[key]).join('-');
+    const groupKey = keys.map((key) => obj[key]).join('-');
     if (!groups[groupKey]) {
       groups[groupKey] = [];
     }
@@ -49,6 +51,8 @@ export const calculateValuesByParams = <T extends keyof DataObject>(data: DataOb
       maximum: Math.max(...group.map((obj: DataObject) => obj.value)),
       minimum: Math.min(...group.map((obj: DataObject) => obj.value)),
       median: calculateMedian(group.map((obj: DataObject) => obj.value)),
+      // calculateAverage 函数里面其实就可以复用这段逻辑；
+      // 例如，抽象出一个 sum 函数
       sum: group.reduce((sum: number, obj: DataObject) => sum + obj.value, 0),
     };
 

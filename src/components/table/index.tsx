@@ -24,6 +24,7 @@ const Table: React.FC<TableProps> = ({ data, title, sortParams }) => {
           </tr>
         </thead>
         <tbody>
+          {/* good */}
           {Object.entries(data).map(([type, stats]) => (
             <tr key={type}>
               <td>{type}</td>

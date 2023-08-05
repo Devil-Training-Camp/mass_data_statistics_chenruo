@@ -2,6 +2,7 @@
  * run pnpm test
  */
 
+// Benchmark 相关的代码应该放在 benchmark 目录，不需要放在 src
 import { benchmarkSuite } from '../src/utils/benchmark.js';
 import { calculateValuesByParams } from '../src/utils/calculateValuesByParams.js';
 import { calculateWeightStats } from '../src/utils/calculateWeightStats.js';
