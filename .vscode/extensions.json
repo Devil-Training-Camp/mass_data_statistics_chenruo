@@ -1,0 +1,21 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "usernamehw.errorlens",
+        "streetsidesoftware.code-spell-checker",
+        "file-icons.file-icons",
+        "sainnhe.gruvbox-material",
+        "amodio.tsl-problem-matcher",
+        "editorconfig.editorconfig",
+        "github.vscode-pull-request-github",
+        "naumovs.color-highlight",
+        "richie5um2.vscode-sort-json",
+        "unional.vscode-sort-package-json",
+        "voorjaar.windicss-intellisense",
+        "wakatime.vscode-wakatime",
+        "znck.grammarly",
+        "stylelint.vscode-stylelint"
+    ]
+}

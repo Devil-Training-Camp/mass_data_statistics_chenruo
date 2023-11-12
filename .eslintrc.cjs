@@ -10,6 +10,18 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
+  validate: [
+    'javascript',
+    'javascriptreact',
+    {
+      language: 'typescript',
+      autoFix: true,
+    },
+    {
+      language: 'typescriptreact',
+      autoFix: true,
+    },
+  ],
   overrides: [
     {
       env: {

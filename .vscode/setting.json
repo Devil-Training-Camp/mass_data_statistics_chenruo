@@ -5,77 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  // 这些不应该配置在这里，而是放在 prettierrc.json 里面就好了
-  "prettier.tabWidth": 2,
-  "prettier.useTabs": false,
-  "prettier.printWidth": 120,
-  "prettier.semi": true,
   "files.eol": "\n",
-  // 建议加 extensions.json 文件，在文件里加推荐的插件
   "stylelint.enable": true,
-  // 同样的，这些也应该写在 stylelint.config.js 文件，不需要在这里重复
-  "stylelint.config": {
-    "extends": ["stylelint-config-standard", "stylelint-config-standard-scss"],
-    "rules": {
-      "comment-no-empty": true
-    },
-    "ignoreFiles": ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"]
-  },
-  "prettier.requireConfig": true,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-  "prettier.arrowParens": "always",
-  "eslint.enable": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
-  ],
-  // 同样，不需要放在这里
-  "eslint.options": {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": [
-      "standard-with-typescript",
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier"
-    ],
-    "overrides": [
-      {
-        "env": {
-          "node": true
-        },
-        "files": [".eslintrc.js", ".eslintrc.cjs"],
-        "parserOptions": {
-          "sourceType": "script",
-          "project": ["./tsconfig.json"]
-        }
-      }
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module",
-      "project": ["./tsconfig.json"]
-    },
-    "plugins": ["react", "@typescript-eslint"],
-    "rules": {
-      "semi": ["error", "always"],
-      "quotes": ["error", "single"],
-      "indent": 2,
-      "@typescript-eslint/strict-boolean-expressions": 1,
-      "@typescript-eslint/require-array-sort-compare": 1
-    }
-  }
+  "eslint.enable": true
 }
