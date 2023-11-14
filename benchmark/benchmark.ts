@@ -1,6 +1,6 @@
 // benchmark 抽出去吧，别跟 source file 混在一起了
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import Benchmark from 'benchmark';
+import Benchmark, { Suite, Target } from 'benchmark';
 import ora from 'ora';
 import chalk from 'chalk';
 // awesome
@@ -22,17 +22,15 @@ const p = new Table({
 });
 
 // 上下文来看，这里应该叫做 RowDef?
-interface ResultObject {
-  case: string;
-  hz: string;
-  hzs: number;
+interface RowDef {
+  case: string | undefined;
+  hz: string | number | undefined;
+  hzs: number | undefined;
   rme: string;
-  sampled: string;
+  sampled: string | undefined;
 }
 
-// 函数名应该是：parseRows/generateRows 等
-// 其次，events 应该有强类型，尽量别用 any
-const getRows = (events: any): ResultObject[] => {
+const generateRows = (suite: { [key: string]: Target }): RowDef[] => {
   // 如果我来写的话，大概会是：
   // return Object.keys(events).filter(k=>/^\d{0,}$/g.test(k)).map((key)=>{
   //   const {
@@ -49,22 +47,23 @@ const getRows = (events: any): ResultObject[] => {
   //     sampled: `${size} run${size === 1 ? '' : 's'} sampled`,
   //   }
   // })
-  const keys = Object.keys(events);
-  return keys.reduce((result: ResultObject[], key) => {
+  const keys = Object.keys(suite) as (keyof Suite)[];
+  return keys.reduce((result: RowDef[], key) => {
     if (/^\d{0,}$/g.test(key)) {
-      const {
-        name,
-        hz,
-        stats: { sample, rme },
-      } = events[key];
-      const size = sample.length;
-      result.push({
-        case: name,
-        hz: Benchmark.formatNumber(hz.toFixed(hz < 100 ? 2 : 0)),
-        hzs: hz,
-        rme: `\xb1${rme.toFixed(2)}%`,
-        sampled: `${size} run${size === 1 ? '' : 's'} sampled`,
-      });
+      const target = suite[key];
+      if (target && target.stats) {
+        const { name, hz, stats } = target;
+        const { sample, rme } = stats;
+        const size = sample.length;
+        const formattedHz = Benchmark.formatNumber(Number(hz ? hz.toFixed(hz < 100 ? 2 : 0) : 0));
+        result.push({
+          case: name,
+          hz: formattedHz,
+          hzs: hz,
+          rme: `\xb1${rme.toFixed(2)}%`,
+          sampled: `${size} run${size === 1 ? '' : 's'} sampled`,
+        });
+      }
     }
     return result;
   }, []);
@@ -72,7 +71,7 @@ const getRows = (events: any): ResultObject[] => {
 
 // 这个逻辑抽得很好，赞一个
 // 不过，row 应该是上面的 ResultObject 类型？
-const addRow = (row: any, isFastest: boolean): void => {
+const addRow = (row: RowDef[], isFastest: boolean): void => {
   p.addRow(
     {
       ...row,
@@ -86,10 +85,6 @@ console.log(chalk.green(description));
 spinner.start(chalk.grey('Testing ...'));
 
 export const benchmarkSuite = function (cases: object): Benchmark.Suite {
-  if (!cases) {
-    throw new Error('Please add test cases correctly.');
-  }
-
   // 下面这个 if 已经包含了上面第一个 if 的效果了
   if (!(cases instanceof Array)) {
     throw new Error('Please add a set of test cases correctly.');
@@ -117,7 +112,7 @@ export const benchmarkSuite = function (cases: object): Benchmark.Suite {
     })
     .on('complete', function () {
       spinner.succeed(chalk.green('Test completed'));
-      getRows(suite.filter('successful')).forEach((row: any) => {
+      generateRows((suite as any).filter('successful')).forEach((row: any) => {
         addRow(row, row.case === suite.filter('fastest').map('name')[0]);
       });
       p.printTable();

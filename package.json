@@ -15,7 +15,6 @@
   },
   "repository": {
     "type": "git",
-    // 很不错，格式都做的很好
     "url": "git+https://github.com/Devil-Training-Camp/mass_data_statistics_chenruo.git"
   },
   "keywords": [],
@@ -26,7 +25,6 @@
   },
   "homepage": "https://github.com/Devil-Training-Camp/mass_data_statistics_chenruo#readme",
   "devDependencies": {
-    // 不需要 babel cli 把？我看都是用的 webpack 做构建的
     "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
@@ -76,7 +74,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  // Awesome!!!
   "lint-staged": {
     "*.{tsx,ts}": [
       "pnpm lint",
